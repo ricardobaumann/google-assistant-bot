@@ -1,0 +1,44 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.2.RELEASE'
+}
+
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            'org.springframework.boot:spring-boot-starter',
+            'org.springframework:spring-web:4.3.11.RELEASE',
+            'org.codehaus.groovy:groovy-all:2.4.7',
+            'com.google.guava:guava:23.0',
+            'com.amazonaws:aws-lambda-java-core:1.1.0',
+            'com.amazonaws:aws-lambda-java-log4j:1.0.0',
+            'com.fasterxml.jackson.core:jackson-core:2.9.1',
+            'com.fasterxml.jackson.core:jackson-annotations:2.9.1',
+            'com.fasterxml.jackson.core:jackson-databind:2.9.1',
+            'com.amazonaws:aws-java-sdk-lambda:1.11.167',
+            'com.amazonaws:aws-java-sdk-api-gateway:1.11.208',
+            'com.amazonaws:aws-lambda-java-core:1.1.0',
+            'com.amazonaws:aws-lambda-java-log4j:1.0.0'
+    )
+
+    // Use JUnit test framework
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// Task for building the zip file for upload
+task buildZip(type: Zip) {
+    // set the base name of the zip file
+    baseName = "${project.name}"
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
