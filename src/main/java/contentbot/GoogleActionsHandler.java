@@ -2,8 +2,8 @@ package contentbot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import contentbot.dto.ApiGatewayResponse;
 import contentbot.dto.ApiGatewayRequest;
+import contentbot.dto.ApiGatewayResponse;
 import contentbot.repo.FrankRepo;
 import contentbot.repo.PapyrusRepo;
 import org.springframework.stereotype.Component;
