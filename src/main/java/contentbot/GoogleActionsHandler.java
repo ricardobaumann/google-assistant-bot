@@ -3,7 +3,7 @@ package contentbot;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import contentbot.dto.ApiGatewayResponse;
-import contentbot.dto.Input;
+import contentbot.dto.ApiGatewayRequest;
 import contentbot.repo.FrankRepo;
 import contentbot.repo.PapyrusRepo;
 import org.springframework.stereotype.Component;
@@ -26,8 +26,8 @@ public class GoogleActionsHandler {
         this.frankRepo = frankRepo;
     }
 
-    ApiGatewayResponse handle(final Input input) throws IOException {
-        final JsonNode inputJsonNode = objectMapper.readTree(input.getBody());
+    ApiGatewayResponse handle(final ApiGatewayRequest apiGatewayRequest) throws IOException {
+        final JsonNode inputJsonNode = objectMapper.readTree(apiGatewayRequest.getBody());
         final String contentQuery = inputJsonNode.get("result").get("parameters").get("content").asText();
 
         return new ApiGatewayResponse(String.format("{\"speech\":\"%s\",\"contextOut\":[],\"data\":{\"google\":{\"expectUserResponse\":false,\"isSsml\":false,\"noInputPrompts\":[]}}}", fetchContent(contentQuery)));

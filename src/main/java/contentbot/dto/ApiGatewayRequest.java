@@ -1,13 +1,13 @@
 package contentbot.dto;
 
-public class Input {
+public class ApiGatewayRequest {
     private String body;
 
-    public Input(final String body) {
+    public ApiGatewayRequest(final String body) {
         this.body = body;
     }
 
-    public Input() {
+    public ApiGatewayRequest() {
     }
 
     public String getBody() {
@@ -20,7 +20,7 @@ public class Input {
 
     @Override
     public String toString() {
-        return "Input{" +
+        return "ApiGatewayRequest{" +
                 "body='" + body + '\'' +
                 '}';
     }
