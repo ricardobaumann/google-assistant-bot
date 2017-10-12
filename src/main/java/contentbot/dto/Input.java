@@ -1,4 +1,4 @@
-package contentbot;
+package contentbot.dto;
 
 public class Input {
     private String body;

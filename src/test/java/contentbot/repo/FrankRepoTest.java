@@ -1,6 +1,6 @@
-package contentbot;
+package contentbot.repo;
 
-import org.junit.Before;
+import com.google.common.collect.Sets;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class PapyrusRepoTest {
+public class FrankRepoTest {
 
     @Autowired
-    private PapyrusRepo papyrusRepo;
-
-    @Before
-    public void setUp() throws Exception {
-    }
+    private FrankRepo frankRepo;
 
     @Test
-    public void fetchIds() throws Exception {
-        final Set<String> ids = papyrusRepo.fetchIds("news");
-        assertThat(ids).isNotEmpty();
+    public void fetchQcus() throws Exception {
+        final Set<String> qcus = frankRepo.fetchQcus(Sets.newHashSet("169565664", "169566800"));
+        assertThat(qcus).isNotEmpty();
     }
 
 }

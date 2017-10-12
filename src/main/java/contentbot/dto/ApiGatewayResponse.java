@@ -1,4 +1,4 @@
-package contentbot;
+package contentbot.dto;
 
 
 import java.util.Collections;
@@ -20,7 +20,7 @@ public final class ApiGatewayResponse {
         this.base64Encoded = base64Encoded;
     }
 
-    ApiGatewayResponse(final String answer) {
+    public ApiGatewayResponse(final String answer) {
         this(answer, Collections.singletonMap("Content-Type", "application/json"), 200, false);
     }
 
