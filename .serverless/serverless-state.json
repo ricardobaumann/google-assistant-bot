@@ -108,7 +108,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/content-bott/dev/1507735615431-2017-10-11T15:26:55.431Z/content-bot.zip"
+                "S3Key": "serverless/content-bott/dev/1507805166218-2017-10-12T10:46:06.218Z/content-bot.zip"
               },
               "FunctionName": "content-bott-dev-answer",
               "Handler": "contentbot.LambdaHandler",
@@ -127,14 +127,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AnswerLambdaVersion2BGJIZOXc2UfQRitwnRCqFi5BpAVBHknEeolIVI3E": {
+          "AnswerLambdaVersionozTEOFjN54WC6d2mCZ1vcZDGcqaQiXsLzqAtML6bZA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AnswerLambdaFunction"
               },
-              "CodeSha256": "2BGJIZOXc2UfQRitwnRCqFi5BpAVBHknE/eolIVI3+E="
+              "CodeSha256": "ozTEOFjN/54WC6d2mCZ1vcZDGcqaQiXsLzqAtML6bZA="
             }
           },
           "ApiGatewayRestApi": {
@@ -196,7 +196,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1507735615510": {
+          "ApiGatewayDeployment1507805166293": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -251,7 +251,7 @@
           "AnswerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AnswerLambdaVersion2BGJIZOXc2UfQRitwnRCqFi5BpAVBHknEeolIVI3E"
+              "Ref": "AnswerLambdaVersionozTEOFjN54WC6d2mCZ1vcZDGcqaQiXsLzqAtML6bZA"
             }
           },
           "ServiceEndpoint": {
@@ -308,7 +308,7 @@
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/content-bott/dev/1507735615431-2017-10-11T15:26:55.431Z",
+    "artifactDirectoryName": "serverless/content-bott/dev/1507805166218-2017-10-12T10:46:06.218Z",
     "artifact": "content-bot.zip"
   }
 }
