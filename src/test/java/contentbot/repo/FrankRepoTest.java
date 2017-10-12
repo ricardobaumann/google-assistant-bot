@@ -20,7 +20,7 @@ public class FrankRepoTest {
 
     @Test
     public void fetchQcus() throws Exception {
-        final Set<String> qcus = frankRepo.fetchQcus(Sets.newHashSet("169565664", "169566800"));
+        final Set<String> qcus = frankRepo.fetchContentSnippet(Sets.newHashSet("169565664", "169566800"));
         assertThat(qcus).isNotEmpty();
     }
 

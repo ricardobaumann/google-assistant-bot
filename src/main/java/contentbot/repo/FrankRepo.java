@@ -25,22 +25,30 @@ public class FrankRepo implements Loggable {
         this.executorService = executorService;
     }
 
-    public Set<String> fetchQcus(final Set<String> ids) {
+    public Set<String> fetchContentSnippet(final Set<String> ids) {
 
-        return ids.stream().map(this::getQcuFuture)
+        return ids.stream().map(this::getContentSnippet)
                 .map(CompletableFuture::join)
-                .filter(Optional::isPresent).map(Optional::get)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
                 .collect(Collectors.toSet());
     }
 
-    private CompletableFuture<Optional<String>> getQcuFuture(final String id) {
+    private CompletableFuture<Optional<String>> getContentSnippet(final String id) {
         return CompletableFuture.supplyAsync(() -> {
             final JsonNode responseJsonNode = restTemplate.getForObject("/content/{id}", JsonNode.class, id);
-            return Optional.ofNullable(responseJsonNode.get("content").get("fields").get("qcuSummary").asText());
+            JsonNode fields = responseJsonNode.get("content").get("fields");
+            return Optional.of(buildSnippet(fields));
         }, executorService)
                 .exceptionally(throwable -> {
                     logger().error("Failed to fetch content for {}", id, throwable);
                     return Optional.empty();
                 });
+    }
+
+    private String buildSnippet(final JsonNode fields) {
+        return fields.get("topic").asText().concat(": ")
+                .concat(fields.get("intro").asText()).concat(": ")
+                .concat(fields.get("qcuSummary").asText());
     }
 }

@@ -108,7 +108,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/content-bott/dev/1507808369872-2017-10-12T11:39:29.872Z/content-bot.zip"
+                "S3Key": "serverless/content-bott/dev/1507808988279-2017-10-12T11:49:48.279Z/content-bot.zip"
               },
               "FunctionName": "content-bott-dev-answer",
               "Handler": "contentbot.LambdaHandler",
@@ -127,14 +127,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AnswerLambdaVersionUePRELuI0voqy286cT8QeLjicPXj7VF4PVMQJkc": {
+          "AnswerLambdaVersionyju1RvqdHdxKtnhr53bO7bTARnafWy9Z97VofJQYVpA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AnswerLambdaFunction"
               },
-              "CodeSha256": "UePRE//LuI0voqy286cT8QeLji+cPXj7V/F4PVMQJkc="
+              "CodeSha256": "yju1RvqdHdxKtnhr53bO7bTARnafWy9Z97VofJQYVpA="
             }
           },
           "ApiGatewayRestApi": {
@@ -196,7 +196,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1507808369958": {
+          "ApiGatewayDeployment1507808988369": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -251,7 +251,7 @@
           "AnswerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AnswerLambdaVersionUePRELuI0voqy286cT8QeLjicPXj7VF4PVMQJkc"
+              "Ref": "AnswerLambdaVersionyju1RvqdHdxKtnhr53bO7bTARnafWy9Z97VofJQYVpA"
             }
           },
           "ServiceEndpoint": {
@@ -308,7 +308,7 @@
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/content-bott/dev/1507808369872-2017-10-12T11:39:29.872Z",
+    "artifactDirectoryName": "serverless/content-bott/dev/1507808988279-2017-10-12T11:49:48.279Z",
     "artifact": "content-bot.zip"
   }
 }

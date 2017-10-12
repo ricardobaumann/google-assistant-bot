@@ -34,7 +34,7 @@ public class GoogleActionsHandler {
     }
 
     private String fetchContent(final String contentQuery) {
-        return frankRepo.fetchQcus(papyrusRepo.fetchIds(contentQuery)).stream().collect(Collectors.joining(""));
+        return frankRepo.fetchContentSnippet(papyrusRepo.fetchIds(contentQuery)).stream().collect(Collectors.joining(""));
     }
 
 }
