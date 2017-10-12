@@ -13,24 +13,19 @@ import java.util.concurrent.Executors;
 public class ContentBotConfig {
 
     @Bean(name = "frankRestTemplate")
-    RestTemplate frankRestTemplate() {
-        return createFrom("biggus", "dickus", "https://frank-ecs-production.up.welt.de");
-    }
-
-    @Bean(name = "stasiRestTemplate")
-    RestTemplate stasiRestTemplate() {
-        return createFrom("biggus", "dickus", "https://stasi-ecs-production.up.welt.de");
+    RestTemplate frankRestTemplate(final FrankProperties frankProperties) {
+        return createFrom(frankProperties.getUsername(), frankProperties.getPassword(), frankProperties.getBaseUrl());
     }
 
     @Bean(name = "papyrusRestTemplate")
-    RestTemplate papyrusRestTemplate() {
+    RestTemplate papyrusRestTemplate(final PapyrusProperties papyrusProperties) {
         final RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add((request, body, execution) -> {
-            request.getHeaders().add("x-api-key", "1yEZZUEyIUXfErUlXlpb8AvDWR4J44a6SHMQMOP8");
+            request.getHeaders().add("x-api-key", papyrusProperties.getApiKey());
             return execution.execute(request, body);
         });
         final DefaultUriTemplateHandler uriTemplateHandler = new DefaultUriTemplateHandler();
-        uriTemplateHandler.setBaseUrl("https://api.ep.welt.de/curation/");
+        uriTemplateHandler.setBaseUrl(papyrusProperties.getBaseUrl());
         restTemplate.setUriTemplateHandler(uriTemplateHandler);
         return restTemplate;
     }

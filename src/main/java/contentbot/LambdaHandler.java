@@ -34,7 +34,7 @@ public class LambdaHandler implements RequestHandler<Input, ApiGatewayResponse>,
     }
 
     public static void main(final String[] args) throws InterruptedException, IOException {
-        getApplicationContext().getBean(Replyer.class).handle(new Input("{\"message\" : \"hey\"}"));
+        getApplicationContext();
     }
 
 }
