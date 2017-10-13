@@ -132,7 +132,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/content-bott/dev/1507906456280-2017-10-13T14:54:16.280Z/content-bot.zip"
+                "S3Key": "serverless/content-bott/dev/1507908495479-2017-10-13T15:28:15.479Z/content-bot.zip"
               },
               "FunctionName": "content-bott-dev-answer",
               "Handler": "contentbot.GoogleActionLambdaHandler",
@@ -151,14 +151,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AnswerLambdaVersionjB3hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ": {
+          "AnswerLambdaVersionyxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AnswerLambdaFunction"
               },
-              "CodeSha256": "jB3+hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ="
+              "CodeSha256": "yxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM="
             }
           },
           "AlexaLambdaFunction": {
@@ -168,7 +168,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/content-bott/dev/1507906456280-2017-10-13T14:54:16.280Z/content-bot.zip"
+                "S3Key": "serverless/content-bott/dev/1507908495479-2017-10-13T15:28:15.479Z/content-bot.zip"
               },
               "FunctionName": "content-bott-dev-alexa",
               "Handler": "contentbot.AlexaLambdaHandler",
@@ -187,14 +187,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AlexaLambdaVersionjB3hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ": {
+          "AlexaLambdaVersionyxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AlexaLambdaFunction"
               },
-              "CodeSha256": "jB3+hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ="
+              "CodeSha256": "yxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM="
             }
           },
           "Alexa2LambdaFunction": {
@@ -204,7 +204,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/content-bott/dev/1507906456280-2017-10-13T14:54:16.280Z/content-bot.zip"
+                "S3Key": "serverless/content-bott/dev/1507908495479-2017-10-13T15:28:15.479Z/content-bot.zip"
               },
               "FunctionName": "content-bott-dev-alexa2",
               "Handler": "contentbot.HelloWorldSpeechletRequestStreamHandler",
@@ -223,14 +223,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "Alexa2LambdaVersionjB3hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ": {
+          "Alexa2LambdaVersionyxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "Alexa2LambdaFunction"
               },
-              "CodeSha256": "jB3+hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ="
+              "CodeSha256": "yxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM="
             }
           },
           "ApiGatewayRestApi": {
@@ -292,7 +292,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1507906456515": {
+          "ApiGatewayDeployment1507908495708": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -373,19 +373,19 @@
           "AnswerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AnswerLambdaVersionjB3hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ"
+              "Ref": "AnswerLambdaVersionyxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM"
             }
           },
           "AlexaLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AlexaLambdaVersionjB3hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ"
+              "Ref": "AlexaLambdaVersionyxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM"
             }
           },
           "Alexa2LambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "Alexa2LambdaVersionjB3hjw7XkAxKM4X5c1XNidZXO4UAvhSANscgEvpLaQ"
+              "Ref": "Alexa2LambdaVersionyxvdFrsEWBt0PMmqfAvQP1ViS9rLQsotsGU3HR5vGsM"
             }
           },
           "ServiceEndpoint": {
@@ -460,7 +460,7 @@
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/content-bott/dev/1507906456280-2017-10-13T14:54:16.280Z",
+    "artifactDirectoryName": "serverless/content-bott/dev/1507908495479-2017-10-13T15:28:15.479Z",
     "artifact": "content-bot.zip"
   }
 }
