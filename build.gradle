@@ -15,15 +15,17 @@ dependencies {
             'org.springframework:spring-web:4.3.11.RELEASE',
             'org.codehaus.groovy:groovy-all:2.4.7',
             'com.google.guava:guava:23.0',
-            'com.amazonaws:aws-lambda-java-core:1.1.0',
-            'com.amazonaws:aws-lambda-java-log4j:1.0.0',
             'com.fasterxml.jackson.core:jackson-core:2.9.1',
             'com.fasterxml.jackson.core:jackson-annotations:2.9.1',
             'com.fasterxml.jackson.core:jackson-databind:2.9.1',
+
             'com.amazonaws:aws-java-sdk-lambda:1.11.167',
             'com.amazonaws:aws-java-sdk-api-gateway:1.11.208',
             'com.amazonaws:aws-lambda-java-core:1.1.0',
-            'com.amazonaws:aws-lambda-java-log4j:1.0.0'
+            'com.amazonaws:aws-lambda-java-log4j:1.0.0',
+
+            'com.amazon.alexa:alexa-skills-kit:1.6.0',
+            'com.amazonaws:aws-java-sdk-dynamodb:1.9.40'
     )
 
     // Use JUnit test framework

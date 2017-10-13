@@ -5,15 +5,24 @@ provider:
   runtime: java8
   memorySize: 1536
   timeout: 300
-  region: eu-west-1
+  #region: eu-west-1
+  region: us-east-1
 
 package:
   artifact: build/distributions/content-bot.zip
 
 functions:
   answer:
-    handler: contentbot.LambdaHandler
+    handler: contentbot.GoogleActionLambdaHandler
     events:
      - http:
          path: question
          method: post
+  alexa:
+    handler: contentbot.AlexaLambdaHandler
+    events:
+     - alexaSkill
+  alexa2:
+      handler: contentbot.HelloWorldSpeechletRequestStreamHandler
+      events:
+       - alexaSkill

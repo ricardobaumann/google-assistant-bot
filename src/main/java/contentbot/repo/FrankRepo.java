@@ -47,8 +47,8 @@ public class FrankRepo implements Loggable {
     }
 
     private String buildSnippet(final JsonNode fields) {
-        return fields.get("topic").asText().concat(": ")
-                .concat(fields.get("intro").asText()).concat(": ")
+        return fields.get("topic").asText()
+                .concat(fields.get("intro").asText())
                 .concat(fields.get("qcuSummary").asText());
     }
 }

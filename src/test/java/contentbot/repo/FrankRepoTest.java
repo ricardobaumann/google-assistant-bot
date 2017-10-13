@@ -1,6 +1,7 @@
 package contentbot.repo;
 
 import com.google.common.collect.Sets;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class FrankRepoTest {
@@ -20,7 +22,7 @@ public class FrankRepoTest {
 
     @Test
     public void fetchQcus() throws Exception {
-        final Set<String> qcus = frankRepo.fetchContentSnippet(Sets.newHashSet("169565664", "169566800"));
+        final Set<String> qcus = frankRepo.fetchContentSnippet(Sets.newHashSet("169580633"));
         assertThat(qcus).isNotEmpty();
     }
 

@@ -30,7 +30,7 @@ public class GoogleActionsHandler {
         final JsonNode inputJsonNode = objectMapper.readTree(apiGatewayRequest.getBody());
         final String contentQuery = inputJsonNode.get("result").get("parameters").get("content").asText();
 
-        return new ApiGatewayResponse(String.format("{\"speech\":\"%s\",\"contextOut\":[],\"data\":{\"google\":{\"expectUserResponse\":false,\"isSsml\":false,\"noInputPrompts\":[]}}}", fetchContent(contentQuery)));
+        return new ApiGatewayResponse("{\"speech\" : \"hello\", \"contextOut\":[],\"data\":{\"google\":{\"expectUserResponse\":false,\"isSsml\":false,\"noInputPrompts\":[]}}}");
     }
 
     private String fetchContent(final String contentQuery) {

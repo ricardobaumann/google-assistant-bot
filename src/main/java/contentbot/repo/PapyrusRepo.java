@@ -16,6 +16,7 @@ import java.util.stream.StreamSupport;
 public class PapyrusRepo implements Loggable {
 
     private final RestTemplate restTemplate;
+    private static final int MAX_RECORDS = 1;
 
     PapyrusRepo(@Qualifier("papyrusRestTemplate") final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -29,6 +30,7 @@ public class PapyrusRepo implements Loggable {
 
             return StreamSupport.stream(articlesArray.spliterator(), false)
                     .map(jsonNode -> jsonNode.get("id").asText())
+                    .limit(MAX_RECORDS)
                     .collect(Collectors.toSet());
         } catch (final Exception e) {
             logger().error("Failed to fetch content from papyrus", e);
