@@ -8,7 +8,7 @@ import contentbot.lambda.LexRequestStreamHandler;
 import java.util.Map;
 
 
-public class AlexaLambdaHandler extends LexRequestStreamHandler {
+public class AlexaLambdaHandler extends LexRequestStreamHandler implements Loggable {
 
     public AlexaLambdaHandler() {
         super("WeltContentBot", new AbstractLexRequestHandler() {
