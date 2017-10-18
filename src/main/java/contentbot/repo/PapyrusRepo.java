@@ -16,16 +16,16 @@ import java.util.stream.StreamSupport;
 public class PapyrusRepo implements Loggable {
 
     private final RestTemplate restTemplate;
-    private static final int MAX_RECORDS = 1;
+    private static final int MAX_RECORDS = 10;
 
     PapyrusRepo(@Qualifier("papyrusRestTemplate") final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public Set<String> fetchIds(final String input) {
+    public Set<String> fetchIds() {
 
         try {
-            final JsonNode responseNode = restTemplate.getForObject("/{source}", JsonNode.class, mapInput(input));
+            final JsonNode responseNode = restTemplate.getForObject("/{source}", JsonNode.class, mapInput());
             final ArrayNode articlesArray = (ArrayNode) responseNode.get(0).get("articles");
 
             return StreamSupport.stream(articlesArray.spliterator(), false)
@@ -38,7 +38,7 @@ public class PapyrusRepo implements Loggable {
         }
     }
 
-    private Object mapInput(final String input) {
+    private Object mapInput() {
         return "newsticker";
     }
 }

@@ -16,7 +16,7 @@ public class GoogleActionLambdaHandler implements RequestHandler<ApiGatewayReque
 
         logger().info("Handling {}", apiGatewayRequest);
         try {
-            return getApplicationContext().getBean(GoogleActionsHandler.class).handle(apiGatewayRequest);
+            return getApplicationContext().getBean(NewstickerGoogleActionsHandler.class).handle(apiGatewayRequest);
         } catch (final IOException e) {
             return new ApiGatewayResponse("{\"message\" : \"error\"}");
         }

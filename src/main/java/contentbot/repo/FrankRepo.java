@@ -2,6 +2,7 @@ package contentbot.repo;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import contentbot.Loggable;
+import contentbot.dto.ContentSnippet;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
@@ -25,7 +26,7 @@ public class FrankRepo implements Loggable {
         this.executorService = executorService;
     }
 
-    public Set<String> fetchContentSnippet(final Set<String> ids) {
+    public Set<ContentSnippet> fetchContentSnippet(final Set<String> ids) {
 
         return ids.stream().map(this::getContentSnippet)
                 .map(CompletableFuture::join)
@@ -34,11 +35,11 @@ public class FrankRepo implements Loggable {
                 .collect(Collectors.toSet());
     }
 
-    private CompletableFuture<Optional<String>> getContentSnippet(final String id) {
+    private CompletableFuture<Optional<ContentSnippet>> getContentSnippet(final String id) {
         return CompletableFuture.supplyAsync(() -> {
             final JsonNode responseJsonNode = restTemplate.getForObject("/content/{id}", JsonNode.class, id);
-            JsonNode fields = responseJsonNode.get("content").get("fields");
-            return Optional.of(buildSnippet(fields));
+
+            return Optional.of(buildSnippet(responseJsonNode));
         }, executorService)
                 .exceptionally(throwable -> {
                     logger().error("Failed to fetch content for {}", id, throwable);
@@ -46,9 +47,8 @@ public class FrankRepo implements Loggable {
                 });
     }
 
-    private String buildSnippet(final JsonNode fields) {
-        return fields.get("topic").asText()
-                .concat(fields.get("intro").asText())
-                .concat(fields.get("qcuSummary").asText());
+    private ContentSnippet buildSnippet(final JsonNode responseJsonNode) {
+        final JsonNode fields = responseJsonNode.get("content").get("fields");
+        return new ContentSnippet(fields.get("topic").asText(), fields.get("intro").asText(), fields.get("qcuSummary").asText(), String.format("https://welt.de/%s", responseJsonNode.get("content").get("webUrl").asText()), responseJsonNode.get("content").get("id").asText());
     }
 }

@@ -1,0 +1,121 @@
+{
+  "originalRequest": {
+    "source": "google",
+    "version": "2",
+    "data": {
+      "isInSandbox": true,
+      "surface": {
+        "capabilities": [
+          {
+            "name": "actions.capability.AUDIO_OUTPUT"
+          },
+          {
+            "name": "actions.capability.SCREEN_OUTPUT"
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "rawInputs": [
+            {
+              "query": "next",
+              "inputType": "KEYBOARD"
+            }
+          ],
+          "arguments": [
+            {
+              "rawText": "next",
+              "textValue": "next",
+              "name": "text"
+            }
+          ],
+          "intent": "actions.intent.TEXT"
+        }
+      ],
+      "user": {
+        "locale": "en-US",
+        "userId": "ABwppHGUiivL9JERjAtz9Ah7wj2iBj_eFP2RwSb4L1-tGHPfU_XA5XpGfDVC0fMnKMuGlCGGwgZQEsuPSpQumg"
+      },
+      "device": {
+      },
+      "conversation": {
+        "conversationId": "1508227929837",
+        "type": "ACTIVE",
+        "conversationToken": "[\"next-yes-followup\"]"
+      },
+      "availableSurfaces": [
+        {
+          "capabilities": [
+            {
+              "name": "actions.capability.AUDIO_OUTPUT"
+            },
+            {
+              "name": "actions.capability.SCREEN_OUTPUT"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "id": "cb940dc8-4d9c-4be5-80c0-5d0a9a4656f6",
+  "timestamp": "2017-10-17T08:13:13.491Z",
+  "lang": "en-us",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "next",
+    "speech": "",
+    "action": "DefaultWelcomeIntent.DefaultWelcomeIntent-yes.next-yes.next-yes-yes",
+    "actionIncomplete": false,
+    "parameters": {
+    },
+    "contexts": [
+      {
+        "name": "next-yes-followup",
+        "parameters": {
+        },
+        "lifespan": 0
+      },
+      {
+        "name": "actions_capability_screen_output",
+        "parameters": {
+        },
+        "lifespan": 0
+      },
+      {
+        "name": "actions_capability_audio_output",
+        "parameters": {
+        },
+        "lifespan": 0
+      },
+      {
+        "name": "google_assistant_input_type_keyboard",
+        "parameters": {
+        },
+        "lifespan": 0
+      }
+    ],
+    "metadata": {
+      "intentId": "cabcb268-d6dc-4c35-b86c-50a990441835",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "nluResponseTime": 6,
+      "intentName": "next - yes - yes"
+    },
+    "fulfillment": {
+      "speech": "",
+      "messages": [
+        {
+          "type": 0,
+          "id": "83b26ffa-8bcb-429c-93b1-5a07b4f4e07c",
+          "speech": ""
+        }
+      ]
+    },
+    "score": 1.0
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "1508227929837"
+}

@@ -1,5 +1,7 @@
 package contentbot.config;
 
+import ai.api.GsonFactory;
+import com.google.gson.Gson;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
@@ -28,6 +30,11 @@ public class ContentBotConfig {
         uriTemplateHandler.setBaseUrl(papyrusProperties.getBaseUrl());
         restTemplate.setUriTemplateHandler(uriTemplateHandler);
         return restTemplate;
+    }
+
+    @Bean
+    Gson gson() {
+        return GsonFactory.getDefaultFactory().getGson();
     }
 
     @Bean
