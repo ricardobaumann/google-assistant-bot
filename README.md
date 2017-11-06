@@ -15,4 +15,4 @@ I was built as an AWS lambda, with 2 function handlers:
 Run `./deploy_lambda.sh` to package and deploy the lambda package. If the API gateway endpoint url changes, it must be updated on the dialog flow configuration. 
 
 ## Suggestions and enhancements
-Join us on [#google-assistant (https://wod.slack.com/messages/C7E22JG2J)] for further discussions. 
+Join us on [#google-assistant](https://wod.slack.com/messages/C7E22JG2J) for further discussions. 
