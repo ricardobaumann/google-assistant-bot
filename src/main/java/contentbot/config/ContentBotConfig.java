@@ -1,6 +1,8 @@
 package contentbot.config;
 
 import ai.api.GsonFactory;
+import com.amazonaws.services.lambda.AWSLambdaAsync;
+import com.amazonaws.services.lambda.AWSLambdaAsyncClientBuilder;
 import com.google.gson.Gson;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +42,11 @@ public class ContentBotConfig {
     @Bean
     ExecutorService executorService() {
         return Executors.newFixedThreadPool(10);
+    }
+
+    @Bean
+    AWSLambdaAsync lambda() {
+        return AWSLambdaAsyncClientBuilder.standard().build();
     }
 
     private RestTemplate createFrom(final String username, final String password, final String baseUrl) {

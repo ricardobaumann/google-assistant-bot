@@ -24,7 +24,11 @@ dependencies {
             'com.amazonaws:aws-lambda-java-core:1.1.0',
             'com.amazonaws:aws-lambda-java-log4j:1.0.0',
 
-            'ai.api:libai:1.6.12'//build and deploy locally https://github.com/dialogflow/dialogflow-java-client
+            'ai.api:libai:1.6.12',//build and deploy locally https://github.com/dialogflow/dialogflow-java-client,
+
+            // https://mvnrepository.com/artifact/commons-io/commons-io
+            'commons-io:commons-io:2.5'
+
 
     )
 
