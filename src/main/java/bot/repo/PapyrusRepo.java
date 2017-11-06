@@ -1,8 +1,8 @@
-package contentbot.repo;
+package bot.repo;
 
+import bot.Loggable;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import contentbot.Loggable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
@@ -16,13 +16,12 @@ import java.util.stream.StreamSupport;
 public class PapyrusRepo implements Loggable {
 
     private final RestTemplate restTemplate;
-    private static final int MAX_RECORDS = 10;
 
     PapyrusRepo(@Qualifier("papyrusRestTemplate") final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public Set<String> fetchIds() {
+    public Set<String> fetchIds(final int limit) {
 
         try {
             final JsonNode responseNode = restTemplate.getForObject("/{source}", JsonNode.class, mapInput());
@@ -30,7 +29,7 @@ public class PapyrusRepo implements Loggable {
 
             return StreamSupport.stream(articlesArray.spliterator(), false)
                     .map(jsonNode -> jsonNode.get("id").asText())
-                    .limit(MAX_RECORDS)
+                    .limit(limit)
                     .collect(Collectors.toSet());
         } catch (final Exception e) {
             logger().error("Failed to fetch content from papyrus", e);

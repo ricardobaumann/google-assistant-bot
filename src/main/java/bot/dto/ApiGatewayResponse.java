@@ -1,4 +1,4 @@
-package contentbot.dto;
+package bot.dto;
 
 
 import java.util.Collections;

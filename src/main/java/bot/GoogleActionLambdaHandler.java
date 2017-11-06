@@ -1,13 +1,13 @@
-package contentbot;
+package bot;
 
+import bot.dto.ApiGatewayRequest;
+import bot.dto.ApiGatewayResponse;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import contentbot.dto.ApiGatewayRequest;
-import contentbot.dto.ApiGatewayResponse;
 
 import java.io.IOException;
 
-import static contentbot.ContentBotApplication.getApplicationContext;
+import static bot.ContentBotApplication.getApplicationContext;
 
 public class GoogleActionLambdaHandler implements RequestHandler<ApiGatewayRequest, ApiGatewayResponse>, Loggable {
 
