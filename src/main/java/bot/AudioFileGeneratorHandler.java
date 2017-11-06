@@ -1,8 +1,8 @@
-package contentbot;
+package bot;
 
+import bot.service.AudioFileService;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import contentbot.service.AudioFileService;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,14 +1,14 @@
-package contentbot;
+package bot;
 
+import bot.dto.ApiGatewayRequest;
+import bot.dto.ApiGatewayResponse;
+import bot.dto.ContentSnippet;
+import bot.service.ContentSnippetService;
 import com.google.common.collect.Sets;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import contentbot.dto.ApiGatewayRequest;
-import contentbot.dto.ApiGatewayResponse;
-import contentbot.dto.ContentSnippet;
-import contentbot.service.ContentSnippetService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

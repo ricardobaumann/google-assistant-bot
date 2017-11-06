@@ -1,16 +1,16 @@
-package contentbot.service;
+package bot.service;
 
+import bot.Loggable;
+import bot.config.AudioFileProperties;
+import bot.config.AudioLambdaProperties;
+import bot.dto.AudioLambdaInput;
+import bot.dto.ContentSnippet;
 import com.amazonaws.services.lambda.AWSLambdaAsync;
 import com.amazonaws.services.lambda.model.InvocationType;
 import com.amazonaws.services.lambda.model.InvokeRequest;
 import com.amazonaws.services.lambda.model.InvokeResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import contentbot.Loggable;
-import contentbot.config.AudioFileProperties;
-import contentbot.config.AudioLambdaProperties;
-import contentbot.dto.AudioLambdaInput;
-import contentbot.dto.ContentSnippet;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

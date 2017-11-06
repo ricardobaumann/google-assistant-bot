@@ -1,8 +1,8 @@
-package contentbot.repo;
+package bot.repo;
 
+import bot.Loggable;
+import bot.dto.ContentSnippet;
 import com.fasterxml.jackson.databind.JsonNode;
-import contentbot.Loggable;
-import contentbot.dto.ContentSnippet;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.HttpClientErrorException;

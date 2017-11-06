@@ -1,9 +1,9 @@
-package contentbot.service;
+package bot.service;
 
-import contentbot.dto.ContentSnippet;
-import contentbot.repo.FrankRepo;
-import contentbot.repo.PapyrusRepo;
-import contentbot.repo.SessionNewstickerStepRepo;
+import bot.dto.ContentSnippet;
+import bot.repo.FrankRepo;
+import bot.repo.PapyrusRepo;
+import bot.repo.SessionNewstickerStepRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

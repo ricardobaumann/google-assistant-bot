@@ -1,4 +1,4 @@
-package contentbot.dto;
+package bot.dto;
 
 public class ApiGatewayRequest {
     private String body;

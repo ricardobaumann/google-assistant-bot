@@ -1,4 +1,4 @@
-package contentbot.dto;
+package bot.dto;
 
 public class ContentSnippet {
     private final String topic;

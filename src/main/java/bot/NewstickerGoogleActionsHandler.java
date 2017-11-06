@@ -1,15 +1,15 @@
-package contentbot;
+package bot;
 
 import ai.api.model.Fulfillment;
 import ai.api.model.GoogleAssistantResponseMessages;
+import bot.dto.ApiGatewayRequest;
+import bot.dto.ApiGatewayResponse;
+import bot.dto.ContentSnippet;
+import bot.service.ContentSnippetService;
+import bot.service.SsmlTranslationService;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import contentbot.dto.ApiGatewayRequest;
-import contentbot.dto.ApiGatewayResponse;
-import contentbot.dto.ContentSnippet;
-import contentbot.service.ContentSnippetService;
-import contentbot.service.SsmlTranslationService;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

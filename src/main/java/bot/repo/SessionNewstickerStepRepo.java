@@ -1,4 +1,4 @@
-package contentbot.repo;
+package bot.repo;
 
 import com.google.common.collect.Sets;
 import org.springframework.stereotype.Repository;

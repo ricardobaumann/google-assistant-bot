@@ -1,4 +1,4 @@
-package contentbot.dto;
+package bot.dto;
 
 public class AudioLambdaInput {
     private final String ssml;

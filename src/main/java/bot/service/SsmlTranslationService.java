@@ -1,7 +1,7 @@
-package contentbot.service;
+package bot.service;
 
-import contentbot.config.AudioFileProperties;
-import contentbot.dto.ContentSnippet;
+import bot.config.AudioFileProperties;
+import bot.dto.ContentSnippet;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

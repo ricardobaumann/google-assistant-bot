@@ -17,14 +17,14 @@ package:
 
 functions:
   answer:
-    handler: contentbot.GoogleActionLambdaHandler
+    handler: bot.GoogleActionLambdaHandler
     events:
      - http:
          path: question
          method: post
 
   filegenerator:
-    handler: contentbot.AudioFileGeneratorHandler
+    handler: bot.AudioFileGeneratorHandler
     events:
     - schedule:
         rate: rate(2 hours)

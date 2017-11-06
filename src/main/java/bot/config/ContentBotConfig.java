@@ -1,4 +1,4 @@
-package contentbot.config;
+package bot.config;
 
 import ai.api.GsonFactory;
 import com.amazonaws.services.lambda.AWSLambdaAsync;
