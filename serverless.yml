@@ -3,7 +3,7 @@ service: content-bott
 provider:
   name: aws
   runtime: java8
-  memorySize: 1536
+  memorySize: 300
   timeout: 300
   region: eu-west-1
   iamRoleStatements:
