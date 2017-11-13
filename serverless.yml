@@ -3,7 +3,7 @@ service: content-bott
 provider:
   name: aws
   runtime: java8
-  memorySize: 1536
+  memorySize: 384
   timeout: 300
   region: eu-west-1
   iamRoleStatements:
@@ -22,6 +22,10 @@ functions:
      - http:
          path: question
          method: post
+     - schedule:
+         rate: rate(10 minutes)
+         input:
+           keepItWarm: true
 
   filegenerator:
     handler: bot.AudioFileGeneratorHandler

@@ -2,6 +2,7 @@ package bot.dto;
 
 public class ApiGatewayRequest {
     private String body;
+    private boolean keepItWarm;
 
     public ApiGatewayRequest(final String body) {
         this.body = body;
@@ -16,6 +17,14 @@ public class ApiGatewayRequest {
 
     public void setBody(final String body) {
         this.body = body;
+    }
+
+    public boolean isKeepItWarm() {
+        return keepItWarm;
+    }
+
+    public void setKeepItWarm(boolean keepItWarm) {
+        this.keepItWarm = keepItWarm;
     }
 
     @Override

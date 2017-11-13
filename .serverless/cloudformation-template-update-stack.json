@@ -111,11 +111,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/content-bott/dev/1509700936600-2017-11-03T09:22:16.600Z/content-bot.zip"
+          "S3Key": "serverless/content-bott/dev/1510574723810-2017-11-13T12:05:23.810Z/content-bot.zip"
         },
         "FunctionName": "content-bott-dev-answer",
-        "Handler": "contentbot.GoogleActionLambdaHandler",
-        "MemorySize": 1536,
+        "Handler": "bot.GoogleActionLambdaHandler",
+        "MemorySize": 384,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -130,14 +130,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "AnswerLambdaVersionjIrkIeKUC88ev0KcZh9roo0ZC2pjg1UQ5R8ELWaQo": {
+    "AnswerLambdaVersionDOduBYDArm8h7hEar5zoa364CSyjvsl7tr2z8uzy8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AnswerLambdaFunction"
         },
-        "CodeSha256": "j/IrkIeKUC88ev0KcZh9roo0ZC2pjg1UQ5R8ELW/aQo="
+        "CodeSha256": "DOduBYDArm8h7hEar5zoa/364CSyjvsl7tr+2z8uzy8="
       }
     },
     "FilegeneratorLambdaFunction": {
@@ -147,11 +147,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/content-bott/dev/1509700936600-2017-11-03T09:22:16.600Z/content-bot.zip"
+          "S3Key": "serverless/content-bott/dev/1510574723810-2017-11-13T12:05:23.810Z/content-bot.zip"
         },
         "FunctionName": "content-bott-dev-filegenerator",
-        "Handler": "contentbot.AudioFileGeneratorHandler",
-        "MemorySize": 1536,
+        "Handler": "bot.AudioFileGeneratorHandler",
+        "MemorySize": 384,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -166,14 +166,52 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "FilegeneratorLambdaVersionjIrkIeKUC88ev0KcZh9roo0ZC2pjg1UQ5R8ELWaQo": {
+    "FilegeneratorLambdaVersionDOduBYDArm8h7hEar5zoa364CSyjvsl7tr2z8uzy8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "FilegeneratorLambdaFunction"
         },
-        "CodeSha256": "j/IrkIeKUC88ev0KcZh9roo0ZC2pjg1UQ5R8ELW/aQo="
+        "CodeSha256": "DOduBYDArm8h7hEar5zoa/364CSyjvsl7tr+2z8uzy8="
+      }
+    },
+    "AnswerEventsRuleSchedule1": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "ScheduleExpression": "rate(10 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Input": "{\"keepItWarm\":true}",
+            "Arn": {
+              "Fn::GetAtt": [
+                "AnswerLambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": "answerSchedule"
+          }
+        ]
+      }
+    },
+    "AnswerLambdaPermissionEventsRuleSchedule1": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "AnswerLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "AnswerEventsRuleSchedule1",
+            "Arn"
+          ]
+        }
       }
     },
     "FilegeneratorEventsRuleSchedule1": {
@@ -272,7 +310,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1509700936714": {
+    "ApiGatewayDeployment1510574723927": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -327,13 +365,13 @@
     "AnswerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AnswerLambdaVersionjIrkIeKUC88ev0KcZh9roo0ZC2pjg1UQ5R8ELWaQo"
+        "Ref": "AnswerLambdaVersionDOduBYDArm8h7hEar5zoa364CSyjvsl7tr2z8uzy8"
       }
     },
     "FilegeneratorLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "FilegeneratorLambdaVersionjIrkIeKUC88ev0KcZh9roo0ZC2pjg1UQ5R8ELWaQo"
+        "Ref": "FilegeneratorLambdaVersionDOduBYDArm8h7hEar5zoa364CSyjvsl7tr2z8uzy8"
       }
     },
     "ServiceEndpoint": {
