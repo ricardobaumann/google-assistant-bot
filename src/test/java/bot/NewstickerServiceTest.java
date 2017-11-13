@@ -4,6 +4,7 @@ import bot.dto.ApiGatewayRequest;
 import bot.dto.ApiGatewayResponse;
 import bot.dto.ContentSnippet;
 import bot.service.ContentSnippetService;
+import bot.service.NewstickerService;
 import com.google.common.collect.Sets;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
@@ -30,7 +31,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class NewstickerGoogleActionsHandlerTest {
+public class NewstickerServiceTest {
 
     @MockBean
     private ContentSnippetService contentSnippetService;
@@ -39,7 +40,7 @@ public class NewstickerGoogleActionsHandlerTest {
     private Gson gson;
 
     @Autowired
-    private NewstickerGoogleActionsHandler newstickerGoogleActionsHandler;
+    private NewstickerService newstickerService;
 
     @Value("classpath:apiai_sample_request.json")
     private Resource sampleJsonRequest;
@@ -58,7 +59,7 @@ public class NewstickerGoogleActionsHandlerTest {
 
     @Test
     public void shouldDeliverNonReadContentSnippetAudioSSml() throws Exception {
-        final ApiGatewayResponse apiGatewayResponse = newstickerGoogleActionsHandler.handle(new ApiGatewayRequest(sampleJsonRequestString));
+        final ApiGatewayResponse apiGatewayResponse = newstickerService.handle(new ApiGatewayRequest(sampleJsonRequestString));
         final JsonElement responseJsonNode = gson.fromJson(apiGatewayResponse.getBody(), JsonElement.class);
         final JsonArray messages = responseJsonNode.getAsJsonObject().get("messages").getAsJsonArray();
         assertThat(messages).isNotEmpty();
@@ -68,7 +69,7 @@ public class NewstickerGoogleActionsHandlerTest {
 
     @Test
     public void shouldDeliverNonReadContentSnippetCardInfo() throws Exception {
-        final ApiGatewayResponse apiGatewayResponse = newstickerGoogleActionsHandler.handle(new ApiGatewayRequest(sampleJsonRequestString));
+        final ApiGatewayResponse apiGatewayResponse = newstickerService.handle(new ApiGatewayRequest(sampleJsonRequestString));
         final JsonElement responseJsonNode = gson.fromJson(apiGatewayResponse.getBody(), JsonElement.class);
         final JsonArray messages = responseJsonNode.getAsJsonObject().get("messages").getAsJsonArray();
         assertThat(messages).isNotEmpty();

@@ -1,7 +1,8 @@
-package bot;
+package bot.service;
 
 import ai.api.model.Fulfillment;
 import ai.api.model.GoogleAssistantResponseMessages;
+import bot.Loggable;
 import bot.dto.ApiGatewayRequest;
 import bot.dto.ApiGatewayResponse;
 import bot.dto.ContentSnippet;
@@ -16,14 +17,16 @@ import java.io.IOException;
 import java.util.*;
 
 @Component
-public class NewstickerGoogleActionsHandler implements Loggable {
+public class NewstickerService implements Loggable {
+
+    private static final String WANT_MORE = " Sagen Sie mehr, wenn Sie fortfahren möchten.";
 
     private final ContentSnippetService contentSnippetService;
     private final SsmlTranslationService ssmlTranslationService;
     private final Gson gson;
     private static final Set<String> FULL_KEYWORDS = Sets.newHashSet("full", "voll");
 
-    NewstickerGoogleActionsHandler(
+    NewstickerService(
             final ContentSnippetService contentSnippetService,
             final SsmlTranslationService ssmlTranslationService,
             final Gson gson) {
@@ -32,7 +35,7 @@ public class NewstickerGoogleActionsHandler implements Loggable {
         this.gson = gson;
     }
 
-    ApiGatewayResponse handle(final ApiGatewayRequest apiGatewayRequest) throws IOException {
+    public ApiGatewayResponse handle(final ApiGatewayRequest apiGatewayRequest) throws IOException {
         final JsonElement jsonElement = gson.fromJson(apiGatewayRequest.getBody(), JsonElement.class);
 
         final String textValueArgument = jsonElement.getAsJsonObject().get("originalRequest")
@@ -69,13 +72,13 @@ public class NewstickerGoogleActionsHandler implements Loggable {
             final ContentSnippet contentSnippet = contentSnippetOptional.get();
             logger().info("Delivering snippet: {}", contentSnippet.getId());
             final GoogleAssistantResponseMessages.ResponseChatBubble.Item item = new GoogleAssistantResponseMessages.ResponseChatBubble.Item();
-            item.setSsml(ssmlTranslationService.asSSML(contentSnippet));
+            item.setSsml(ssmlTranslationService.asSSML(contentSnippet, WANT_MORE));
             chatBubble.setItems(Collections.singletonList(item));
 
             final GoogleAssistantResponseMessages.ResponseBasicCard responseBasicCard = new GoogleAssistantResponseMessages.ResponseBasicCard();
             responseBasicCard.setTitle(contentSnippet.getTopic());
             responseBasicCard.setSubtitle(contentSnippet.getIntro());
-            responseBasicCard.setFormattedText(contentSnippet.getSummary());
+            responseBasicCard.setFormattedText(contentSnippet.getSummary().concat(WANT_MORE));
             final GoogleAssistantResponseMessages.ResponseBasicCard.Button button = new GoogleAssistantResponseMessages.ResponseBasicCard.Button();
             button.setTitle("Check it on welt");
             final GoogleAssistantResponseMessages.ResponseBasicCard.OpenUrlAction action = new GoogleAssistantResponseMessages.ResponseBasicCard.OpenUrlAction();

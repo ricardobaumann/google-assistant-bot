@@ -3,6 +3,7 @@ package bot.service;
 import bot.config.AudioFileProperties;
 import bot.dto.ContentSnippet;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 @Service
 public class SsmlTranslationService {
 
+    private static final String EMPTY_STRING = "";
     private final AudioFileProperties audioFileProperties;
 
     SsmlTranslationService(final AudioFileProperties audioFileProperties) {
@@ -29,18 +31,19 @@ public class SsmlTranslationService {
             "\n" +
                     "  <p>\n" +
                     "    <s xml:lang=\"de-DE\">\n" +
-                    "        <emphasis>%s</emphasis> <break time=\"2s\" /> %s <break time=\"2s\" /> %s\n" +
+                    "        <emphasis>%s</emphasis> <break time=\"2s\" /> %s <break time=\"2s\" /> %s %s\n" +
                     "    </s>\n" +
                     "  </p>\n" +
                     "\n";
 
-    public String asSSML(final ContentSnippet contentSnippet) {
-        return String.format(SSML_HEADER + SSML_PARAGRAPH_TEMPLATE + SSML_FOOTER, contentSnippet.getTopic(), contentSnippet.getIntro(), contentSnippet.getSummary());
+    public String asSSML(final ContentSnippet contentSnippet, String question) {
+            return String.format(SSML_HEADER + SSML_PARAGRAPH_TEMPLATE + SSML_FOOTER, contentSnippet.getTopic(), contentSnippet.getIntro(), contentSnippet.getSummary(), question);
     }
 
     String asSSML(final Set<ContentSnippet> contentSnippets) {
         return SSML_HEADER
-                + (contentSnippets.stream().map(contentSnippet -> String.format(SSML_PARAGRAPH_TEMPLATE, contentSnippet.getTopic(), contentSnippet.getIntro(), contentSnippet.getSummary()))
+                + (contentSnippets.stream()
+                .map(contentSnippet -> String.format(SSML_PARAGRAPH_TEMPLATE, contentSnippet.getTopic(), contentSnippet.getIntro(), contentSnippet.getSummary(), EMPTY_STRING))
                 .collect(Collectors.joining()))
                 + SSML_FOOTER;
     }
